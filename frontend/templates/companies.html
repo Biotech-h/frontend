@@ -4,8 +4,8 @@
     </head>
     <body>
         <h1>{{ page_title }}</h1>
-        {% for companies in all_companies %}
-        <h2>{{ companies.name }}</h2>
+        {% for company in companies %}
+        <h2>{{ company.name }}</h2>
         {% endfor %}
     </body>
 </html>

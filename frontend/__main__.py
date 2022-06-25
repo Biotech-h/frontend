@@ -1,25 +1,25 @@
 from flask import Flask, render_template
-from frontend.API.companies import CompaniesApi
-import json
 
-companies_api = CompaniesApi()
+from frontend.api.companies import CompaniesApi
+from frontend.config import config
+
+companies_api = CompaniesApi(config.backend.url)
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    title = "Biotech-h"
+    title = 'Biotech-h'
     return render_template('index.html', page_title=title)
 
 
 @app.get('/companies')
 def get_all_companies():
-    all_companies = CompaniesApi.get_all()
-    title = 'Список компаний'
+    companies = companies_api.get_all()
 
-    return render_template('companies.html', page_title=title, all_companies=all_companies)
+    return render_template('companies.html', page_title='Список компаний', companies=companies)
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host=config.server.host, port=config.server.port)
