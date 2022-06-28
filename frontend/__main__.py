@@ -1,24 +1,17 @@
 from flask import Flask, render_template
 
-from frontend.api.companies import CompaniesApi
 from frontend.config import config
-
-companies_api = CompaniesApi(config.backend.url)
+from frontend.views import companies, jobs
 
 app = Flask(__name__)
+app.register_blueprint(companies.routes, url_prefix='/')
+app.register_blueprint(jobs.routes, url_prefix='/')
 
 
 @app.route('/')
 def index():
     title = 'Biotech-h'
     return render_template('index.html', page_title=title)
-
-
-@app.get('/companies')
-def get_all_companies():
-    companies = companies_api.get_all()
-
-    return render_template('companies.html', page_title='Список компаний', companies=companies)
 
 
 if __name__ == '__main__':
