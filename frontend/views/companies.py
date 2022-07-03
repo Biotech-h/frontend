@@ -10,7 +10,7 @@ routes = Blueprint('companies', __name__)
 
 
 @routes.get('/companies')
-def get_all_companies():
+def get_all():
     companies = companies_api.get_all()
 
     return render_template('companies.html', page_title='Список компаний', companies=companies)
