@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block buttons %}
-<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-    <li><a href="{{ url_for('index') }}" class="nav-link px-2 text-warning">Biotech-h</a></li>
+<ul class="nav">
+    <li><a href="{{ url_for('index') }}" class="btn btn-outline-warning text-warning me-md-2" height="32">Biotech-h</a></li>
     <li><a href="{{ url_for('companies.get_all') }}" class="btn btn-light me-md-2" height="32">Компании</a></li>
     <li><a href="{{ url_for('jobs.get_all') }}" class="btn btn-outline-secondary text-white" height="32">Вакансии</a></li>
 </ul>
@@ -10,9 +10,24 @@
 
 {% block content %}
 
-    <h1>{{ page_title }}</h1>
         {% for company in companies %}
-        <h2>{{ company.name }}</h2>
+        <header class="col-6 p-3 float-md-end">
+            <div class="card w-75">
+                <div class="card-body">
+                <h5 class="card-title">{{ company.name }}</h5>
+                <p class="card-text">Регион: {{ company.region }}</p>
+                <p class="card-text">{{ company.description }}</p>
+                <a href="#" class="btn btn-outline-warning">Вакансии компании</a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+
         {% endfor %}
 
 {% endblock %}
+
+
+
+
