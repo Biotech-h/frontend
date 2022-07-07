@@ -10,12 +10,36 @@
 
 {% block content %}
 
-    <body>
-        <h1>{{ page_title }}</h1>
-        {% for job in jobs %}
-        <h2>{{ job.name }}</h2>
-        {% endfor %}
-    </body>
+<div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom">{{ page_title }}</h2>
+</div>
+
+{% for job in jobs %}
+<div class="card text-center">
+  <div class="card-header">
+    Cюда подтяну название компании
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ job.name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      {% if job.salary == None %}
+        Зарплата не указана
+      {% else %}
+       Зарплата: {{job.salary}}
+      {% endif %}
+    </h6>
+    <p class="card-text">{{ job.description }}</p>
+    <a href="{{ job.url }}" class="btn btn-outline-warning">Вакансия на сайте компании</a>
+  </div>
+  <div class="card-footer text-muted">
+    Вакансия опубликована {{ job.date_published }}
+  </div>
+</div>
+
+<h2 class="pb-3"></h2>
+
+{% endfor %}
+
 
 
 {% endblock %}
