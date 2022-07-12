@@ -14,10 +14,10 @@
     <h2 class="pb-2 border-bottom">{{ page_title }}</h2>
 </div>
 
-{% for job in jobs %}
+{% for job, company_name in jobs %}
 <div class="card text-center">
   <div class="card-header">
-    Cюда подтяну название компании
+    {{ company_name }}
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ job.name }}</h5>
@@ -25,10 +25,16 @@
       {% if job.salary == None %}
         Зарплата не указана
       {% else %}
-       Зарплата: {{job.salary}}
+       Зарплата: {{ job.salary }}
       {% endif %}
     </h6>
-    <p class="card-text">{{ job.description }}</p>
+    <p class="card-text">
+        {% if job.description == None %}
+            Описания нет. Смотрите подробности на сайте компании
+        {% else %}
+            {{ job.description }}
+        {% endif %}
+    </p>
     <a href="{{ job.url }}" class="btn btn-outline-warning">Вакансия на сайте компании</a>
   </div>
   <div class="card-footer text-muted">
