@@ -9,4 +9,4 @@ routes = Blueprint('companies', __name__)
 def get_all():
     companies = client.companies.get_all()
 
-    return render_template('companies.html', page_title='Список компаний', companies=companies)
+    return render_template('companies.html', page_title='Все компании', companies=companies)

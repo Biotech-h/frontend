@@ -27,7 +27,7 @@ def get_all():
 
     return render_template(
         'jobs.html',
-        page_title='Список вакансий',
+        page_title='Все вакансии',
         jobs=models,
         companies=list(companies.values()),
     )
