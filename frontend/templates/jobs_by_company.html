@@ -2,9 +2,9 @@
 
 {% block buttons %}
 <ul class="nav">
-    <li><a href="{{ url_for('index') }}" class="btn btn-outline-warning me-md-2">Biotech-h</a></li>
+    <li><a href="{{ url_for('index') }}" class="btn btn-outline-warning me-md-2" height="32">Biotech-h</a></li>
     <li><a href="{{ url_for('companies.get_all') }}" class="btn btn-outline-secondary text-white me-md-2" height="32">Компании</a></li>
-    <li><a href="{{ url_for('jobs.get_all') }}" class="btn btn-light" height="32">Вакансии</a></li>
+    <li><a href="{{ url_for('jobs.get_all') }}" class="btn btn-outline-secondary text-white" height="32">Вакансии</a></li>
 </ul>
 {% endblock %}
 
@@ -14,7 +14,7 @@
     <h2 class="pb-2 border-bottom">{{ page_title }}</h2>
 </div>
 
-{% for job, company_name in jobs %}
+{% for job in jobs %}
 <div class="card text-center">
   <div class="card-header">
     {{ company_name }}
