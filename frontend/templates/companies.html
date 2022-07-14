@@ -11,21 +11,32 @@
 {% block content %}
 
         {% for company in companies %}
-        <header class="col-6 p-3 float-md-end">
-            <div class="card w-75">
-                <div class="card-body">
-                <h5 class="card-title">{{ company.name }}</h5>
-                <p class="card-text">Регион: {{ company.region }}</p>
-                <p class="card-text">{{ company.description }}</p>
-                <a href="{{ url_for('companies.get_for_company', uid=company.uid, name=company.name) }}" class="btn btn-outline-warning">Все вакансии {{ company.name }}</a>
-                </div>
+
+        <div class="my-4 mb-4 text-white bg-dark rounded-3 text-center">
+            <div class="container-fluid py-5">
+              <h1 class="display-5 fw-bold">{{ company.name }}</h1>
+              <p class="fs-4 text-center text-secondary">Регион: {{ company.region }}</p>
+              <p class="fs-4 text-center">{{ company.description }}</p>
+              <a href="{{ url_for('companies.get_for_company', uid=company.uid, name=company.name) }}" class="btn btn-outline-warning">Все вакансии {{ company.name }}</a>
             </div>
-        </div>
-        </header>
+          </div>
 
         {% endfor %}
 
+
 {% endblock %}
+
+<header class="col-6 p-3 float-md-start">
+    <div class="card w-75 text-center">
+        <div class="card-body">
+        <h5 class="card-title">{{ company.name }}</h5>
+        <p class="card-text">Регион: {{ company.region }}</p>
+        <p class="card-text">{{ company.description }}</p>
+        <a href="{{ url_for('companies.get_for_company', uid=company.uid, name=company.name) }}" class="btn btn-outline-warning">Все вакансии {{ company.name }}</a>
+        </div>
+    </div>
+</div>
+</header>
 
 
 
