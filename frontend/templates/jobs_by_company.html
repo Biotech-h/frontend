@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block buttons %}
+<ul class="nav">
+    <li><a href="{{ url_for('index') }}" class="btn btn-outline-warning text-warning me-md-2" height="32">Biotech-h</a></li>
+    <li><a href="{{ url_for('companies.get_all') }}" class="btn btn-outline-secondary text-white me-md-2" height="32">Компании</a></li>
+    <li><a href="{{ url_for('jobs.get_all') }}" class="btn btn-outline-secondary text-white" height="32">Вакансии</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+
+<div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom">{{ page_title }}</h2>
+</div>
+
+{% for job in jobs %}
+<div class="card text-center">
+  <div class="card-header">
+    {{ company_name }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ job.name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      {% if job.salary == None %}
+        Зарплата не указана
+      {% else %}
+       Зарплата: {{ job.salary }}
+      {% endif %}
+    </h6>
+    <p class="card-text">
+        {% if job.description == None %}
+            Описания нет. Смотрите подробности на сайте компании
+        {% else %}
+            {{ job.description }}
+        {% endif %}
+    </p>
+    <a href="{{ job.url }}" class="btn btn-outline-warning">Вакансия на сайте компании</a>
+  </div>
+  <div class="card-footer text-muted">
+    Вакансия опубликована {{ job.date_published }}
+  </div>
+</div>
+
+<h2 class="pb-3"></h2>
+
+{% endfor %}
+
+
+
+{% endblock %}

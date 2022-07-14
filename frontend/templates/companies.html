@@ -17,7 +17,7 @@
                 <h5 class="card-title">{{ company.name }}</h5>
                 <p class="card-text">Регион: {{ company.region }}</p>
                 <p class="card-text">{{ company.description }}</p>
-                <a href="#" class="btn btn-outline-warning">Вакансии компании</a>
+                <a href="{{ url_for('companies.get_for_company', uid=company.uid, name=company.name) }}" class="btn btn-outline-warning">Все вакансии {{ company.name }}</a>
                 </div>
             </div>
         </div>
