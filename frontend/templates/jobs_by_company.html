@@ -38,7 +38,11 @@
     <a href="{{ job.url }}" class="btn btn-outline-warning">Вакансия на сайте компании</a>
   </div>
   <div class="card-footer text-muted">
-    Вакансия опубликована {{ job.date_published }}
+    {% if job.date_published == None %}
+        Дата публикации вакансии неизвестна
+    {% else %}
+        Вакансия опубликована {{ job.date_published }}
+    {% endif %}
   </div>
 </div>
 
